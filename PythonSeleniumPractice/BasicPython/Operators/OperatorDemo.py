@@ -11,7 +11,6 @@ print("a / b =", a / b)    # Division
 print("a % b =", a % b)    # Modulus
 print("a ** b =", a ** b)  # Exponentiation
 print("a // b =", a // b)  # Floor division
-
 print("\nComparison Operators:")
 print("a == b:", a == b)
 print("a != b:", a != b)
