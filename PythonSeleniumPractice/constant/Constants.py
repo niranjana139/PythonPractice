@@ -1,0 +1,5 @@
+file_path="C:\\Users\\Netcom\\Desktop\\Niranjana Obsqura\\TestData.xlsx"
+url="https://groceryapp.uniqassosiates.com/admin/login"
+LOGIN_PAGE="LoginPage"
+HOME_PAGE="HomePage"
+NEWSTEXT="This is a sample news"
