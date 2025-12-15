@@ -11,10 +11,10 @@ from utility.ExcelUtility import ExcelUtility
  # Assuming you have a fixture to set up the WebDriver
 class TestHomePage:
 
-    def test_verify_whether_user_able_to_logout(self,browserinstance):
+    def test_verify_whether_user_able_to_logout(self,driver):
         """Test case to verify if the user is able to logout"""
        # Replace with actual URL
-        self.driver=browserinstance
+        self.driver=driver
         self.driver.get("https://groceryapp.uniqassosiates.com/admin/login")
         self.driver.maximize_window()
         # Initialize the LoginPage object

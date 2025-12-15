@@ -10,9 +10,9 @@ from constant import Constants, Messages
 class TestAdmin:
 
     @pytest.mark.smoke
-    def test_verify_able_to_add_user(self,browserinstance):
+    def test_verify_able_to_add_user(self,driver):
         """Test to verify that a user can be added."""
-        self.driver = browserinstance
+        self.driver = driver
         self.driver.get("https://groceryapp.uniqassosiates.com/admin/login")
         self.driver.maximize_window()
         # Initialize the LoginPage object

@@ -2,17 +2,15 @@ import pytest
 import sys
 import os
 
-from constant import Constants
-from pages.LoginPage import LoginPage
-from pages.NewsPage import NewsPage
+from PythonSeleniumPractice.constant import Constants
+from PythonSeleniumPractice.pages.LoginPage import LoginPage
+from PythonSeleniumPractice.utility.ExcelUtility import ExcelUtility
 
-
-from utility.ExcelUtility import ExcelUtility
 
 class TestNewsTest:
 
-    def test_verify_add_news(self,browserinstance):
-        self.driver = browserinstance
+    def test_verify_add_news(self,driver):
+        self.driver = driver
         self.driver.get("https://groceryapp.uniqassosiates.com/admin/login")
         self.driver.maximize_window()
         # Add the path to the pages directory
@@ -37,8 +35,8 @@ class TestNewsTest:
         assert news_page.is_alert_displayed(), "Alert is not displayed for adding news"
 
     @pytest.mark.smoke
-    def test_verify_reset(self,browserinstance):
-        self.driver = browserinstance
+    def test_verify_reset(self,driver):
+        self.driver = driver
         self.driver.get("https://groceryapp.uniqassosiates.com/admin/login")
         self.driver.maximize_window()
         login_page = LoginPage(self.driver)
@@ -58,8 +56,8 @@ class TestNewsTest:
 
 
     @pytest.mark.parametrize("search_term", ["New Courses Offered", "Special Discounts", "Top Selling Products"])
-    def test_verify_search_news(self,browserinstance,search_term):
-        self.driver = browserinstance
+    def test_verify_search_news(self,driver,search_term):
+        self.driver = driver
         self.driver.get("https://groceryapp.uniqassosiates.com/admin/login")
         self.driver.maximize_window()
         login_page = LoginPage(self.driver)

@@ -6,8 +6,11 @@ def capture_screenshot(item, file_path):
     Returns the file path if successful, else None.
     """
     driver = None
-    if hasattr(item, 'funcargs') and 'browserinstance' in item.funcargs:
-        driver = item.funcargs['browserinstance']
+    if hasattr(item, "funcargs"):
+        if "browser_instance" in item.funcargs:
+            driver = item.funcargs["browser_instance"]
+        elif "cross_browser" in item.funcargs:
+            driver = item.funcargs["cross_browser"]
 
     if driver:
         os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Ensure directory exists
