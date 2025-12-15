@@ -1,7 +1,7 @@
+import random
 import string
 import sys
 import os
-from random import random
 
 import pytest
 
