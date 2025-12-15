@@ -27,13 +27,11 @@ class TestAdmin:
 
         home_page = login_page.click_signin_button()
 
-        name = excelUtility.get_string_data(2, 1, Constants.HOME_PAGE)
-        password = excelUtility.get_string_data( 2, 2, Constants.HOME_PAGE)
-        user_type = excelUtility.get_string_data(2, 3, Constants.HOME_PAGE)
+
 
         # Click on Admin tile and perform actions to add a new user
         admin_page =home_page.click_on_tile()
-        admin_page.click_new_button().add_name_method(name).add_password_method(password).select_type(user_type).click_save()
+        admin_page.click_new_button().add_name_method("randomuser").add_password_method("randompassword").select_type("staff").click_save()
 
         expected_URL="https://groceryapp.uniqassosiates.com/admin/user/add"
         actual_URL =self.driver.current_url
@@ -57,14 +55,12 @@ class TestAdmin:
         home_page = login_page.click_signin_button()
 
 
-        name = excelUtility.get_string_data( 2, 1, Constants.HOME_PAGE)
-        password = excelUtility.get_string_data( 2, 2, Constants.HOME_PAGE)
-        user_type = excelUtility.get_string_data(2, 3, Constants.HOME_PAGE)
+
         # Click on Admin tile and search for the user
         admin_page=home_page.click_on_tile()
         admin_page.click_search()
-        admin_page.search_username(name)
-        admin_page.search_user_type(user_type)
+        admin_page.search_username("randomname")
+        admin_page.search_user_type("staff")
         admin_page.search_user()
 
         expected_URL="https://groceryapp.uniqassosiates.com/admin/user/index"
