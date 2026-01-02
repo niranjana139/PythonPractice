@@ -4,7 +4,6 @@ import StringHandling
 import DataTypes
 import Operators.OperatorDemo
 import Operators.OperatorPrecedence
-import OOPS.Abstraction.Cat
 import OOPS.Encapsulation.Person
 import OOPS.singleInheritance.Dog
 import Loops.ForLoopExample
