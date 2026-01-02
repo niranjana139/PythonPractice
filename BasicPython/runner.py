@@ -1,2 +1,16 @@
-import StringHandling
+from piglet.compilett import Statement
 
+import StringHandling
+import DataTypes
+import Operators.OperatorDemo
+import Operators.OperatorPrecedence
+import OOPS.Abstraction.Cat
+import OOPS.Encapsulation.Person
+import OOPS.singleInheritance.Dog
+import Loops.ForLoopExample
+import Loops.WhileLoopExample
+import Loops.MultiplicationTable
+import Functions.BasicFunction
+import Functions.VariableLengthFunctionExample
+import Collections.SetExample
+import ExceptionHandling.ExceptionHandlingExample
