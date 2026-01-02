@@ -10,5 +10,4 @@ import Loops.WhileLoopExample
 import Loops.MultiplicationTable
 import Functions.BasicFunction
 import Functions.VariableLengthFunctionExample
-import Collections.SetExample
 import ExceptionHandling.ExceptionHandlingExample
