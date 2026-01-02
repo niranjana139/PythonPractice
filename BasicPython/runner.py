@@ -5,7 +5,6 @@ import DataTypes
 import Operators.OperatorDemo
 import Operators.OperatorPrecedence
 import OOPS.Encapsulation.Person
-import OOPS.singleInheritance.Dog
 import Loops.ForLoopExample
 import Loops.WhileLoopExample
 import Loops.MultiplicationTable
