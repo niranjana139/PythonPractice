@@ -1,11 +1,10 @@
 import pytest
 from pymsgbox import password
 
-from pages.HomePage import HomePage
-from pages.LoginPage import LoginPage
-from pages.AdminPage import AdminPage
-from utility.ExcelUtility import ExcelUtility
-from constant import Constants, Messages
+from PythonSeleniumPractice.constant import Constants, Messages
+from PythonSeleniumPractice.pages.LoginPage import LoginPage
+from PythonSeleniumPractice.utility.ExcelUtility import ExcelUtility
+
 
 class TestAdmin:
 
@@ -31,7 +30,7 @@ class TestAdmin:
 
         # Click on Admin tile and perform actions to add a new user
         admin_page =home_page.click_on_tile()
-        admin_page.click_new_button().add_name_method("randomuser").add_password_method("randompassword").select_type("staff").click_save()
+        admin_page.click_new_button().add_name_method("randomuser").add_password_method("randompassword").select_type("Staff").click_save()
 
         expected_URL="https://groceryapp.uniqassosiates.com/admin/user/add"
         actual_URL =self.driver.current_url
@@ -56,11 +55,11 @@ class TestAdmin:
 
 
 
-        # Click on Admin tile and search for the user
+           # Click on Admin tile and search for the user
         admin_page=home_page.click_on_tile()
         admin_page.click_search()
         admin_page.search_username("randomname")
-        admin_page.search_user_type("staff")
+        admin_page.search_user_type("Staff")
         admin_page.search_user()
 
         expected_URL="https://groceryapp.uniqassosiates.com/admin/user/index"

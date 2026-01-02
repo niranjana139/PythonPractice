@@ -1,14 +1,14 @@
 import pytest
-from pages.HomePage import HomePage
-from pages.LoginPage import LoginPage
-from constant import Constants, Messages
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-from utility.ExcelUtility import ExcelUtility
+from PythonSeleniumPractice.constant import Constants, Messages
+from PythonSeleniumPractice.pages.LoginPage import LoginPage
+from PythonSeleniumPractice.utility.ExcelUtility import ExcelUtility
 
 
- # Assuming you have a fixture to set up the WebDriver
+# Assuming you have a fixture to set up the WebDriver
 class TestHomePage:
 
     def test_verify_whether_user_able_to_logout(self,driver):
@@ -36,3 +36,4 @@ class TestHomePage:
         # Verify URL after logout
         expected_url = "https://groceryapp.uniqassosiates.com/admin/login"
         assert actual_url == expected_url, Messages.LOGOUT_ERROR
+

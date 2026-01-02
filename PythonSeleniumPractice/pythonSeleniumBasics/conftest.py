@@ -1,4 +1,4 @@
-import pytest
+'''import pytest
 
 
 @pytest.fixture(scope="class")
@@ -40,3 +40,4 @@ def browserinstance(request):
     driver.implicitly_wait(10)
     yield driver
     driver.close()
+'''

@@ -4,18 +4,18 @@ class HandleTables(BasicSelenium):
 
     def verify_handle_tables(self):
         # Navigate to the desired URL
-        self.driver.get("https://money.rediff.com/indices/nse")
+        self.driver.get("https://selenium.qabible.in/table-pagination.php")
 
         # Locate the table element
-        table = self.driver.find_element(By.XPATH, "//table[@id='dataTable']")
+        table = self.driver.find_element(By.XPATH, "//table[@id='dtBasicExample']")
         print("Entire Table Text is ",table.text)  # Get the full table text
 
         # Fetch only a specific row (3rd row in this case)
-        table_row = self.driver.find_element(By.XPATH, "//table[@id='dataTable']/tbody/tr[3]")
+        table_row = self.driver.find_element(By.XPATH, "//table[@id='dtBasicExample']/tbody/tr[3]")
         print("Third row text is ",table_row.text)  # Get the text of the row
 
         # Fetch only a specific row (3rd row in this case)
-        last_table_row = self.driver.find_element(By.XPATH, "//table[@id='dataTable']/tbody/tr[last()]")
+        last_table_row = self.driver.find_element(By.XPATH, "//table[@id='dtBasicExample']/tbody/tr[last()]")
         print("Last row text is ",last_table_row.text)
 
 if __name__ == "__main__":

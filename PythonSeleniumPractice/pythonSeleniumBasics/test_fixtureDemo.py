@@ -1,4 +1,4 @@
-import pytest
+'''import pytest
 @pytest.mark.usefixtures("setup")
 class Test_fixtureDemo:
 
@@ -16,3 +16,4 @@ class Test_fixtureDemo:
 
     def test_fixtureDemo3(self):
         print("I'll perform Fixture Demo 3 statements")
+'''

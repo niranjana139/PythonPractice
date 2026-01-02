@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from utility.PageUtility import PageUtility
-from utility.WaitUtility import WaitUtility
+
+from PythonSeleniumPractice.utility.PageUtility import PageUtility
+from PythonSeleniumPractice.utility.WaitUtility import WaitUtility
 
 
 class AdminPage:
@@ -19,7 +20,7 @@ class AdminPage:
         self.add_password =(By.ID, "password")
         self.user_type =(By.XPATH, "//select[@name='ut']")
         self.save_btn = (By.XPATH, "//button[@name='Create']")
-        self.user_types = (By.XPATH, "//select[@name='user_type']")
+        self.user_types = (By.XPATH, "//select[@id='user_type']")
         self.search = (By.XPATH, "//a[@class=\"btn btn-rounded btn-primary\"]")
         self.username = (By.ID, "un")
         self.user_type_drop = (By.ID, "ut")
@@ -88,8 +89,4 @@ class AdminPage:
     def reset(self):
         resetbtnElement=self.driver.find_element(*self.reset_btn)
         self.page_utility.click_on_element(resetbtnElement)
-        return AdminPage(self.driver)
-
-    def access_pushmenu(self):
-        self.page_utility.click_on_element(self.pushmenu)
         return AdminPage(self.driver)

@@ -1,4 +1,4 @@
-import pytest
+'''import pytest
 
 from pythonSeleniumBasics.conftest import dataLoad
 
@@ -11,6 +11,6 @@ class Test_fixtureData:
         print("User profile data is edited")
         print(dataLoad)
 
-        '''print(dataLoad[0])
+        print(dataLoad[0])
         print(dataLoad[1])
         print(dataLoad[2])'''

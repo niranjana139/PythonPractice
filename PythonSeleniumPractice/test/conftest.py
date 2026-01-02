@@ -1,6 +1,8 @@
 import os.path
 
 from datetime import datetime
+
+import allure
 import pytest
 from selenium import webdriver
 
@@ -8,8 +10,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
-from PythonSeleniumPractice.utility import ScreenshotUtility
+import base64
 
+import pytest_html
 
 @pytest.fixture(scope="class")
 def setup():
@@ -90,32 +93,47 @@ def pytest_configure(config):
     # Override the HTML report output path dynamically
     config.option.htmlpath = os.path.join(REPORT_FOLDER, "report.html")
 
+
+import os
+import base64
+import pytest
+import allure
+from pytest_html import extras as html_extras
+
+REPORT_FOLDER = os.path.join(os.getcwd(), "reports")
+
 @pytest.hookimpl(hookwrapper=True)
-def pytest_runtest_makereport(item):
-    global REPORT_FOLDER
-    pytest_html = item.config.pluginmanager.getplugin('html')
-
+def pytest_runtest_makereport(item, call):
     outcome = yield
-    report = outcome.get_result()
-    extra = getattr(report, 'extras', [])
+    rep = outcome.get_result()
 
-    if report.when in ('setup', 'call'):
-        xfail = hasattr(report, 'wasxfail')
-        if (report.skipped and xfail) or (report.failed and not xfail):
-            safe_name = report.nodeid.replace("::", "_").replace("/", "_")
-            screenshot_path = os.path.join(REPORT_FOLDER, f"{safe_name}.png")
-            print(f"Capturing screenshot: {screenshot_path}")
+    if rep.when == "call" and rep.failed:
+        try:
+            driver = item.funcargs.get("browserinstance")  # your driver fixture
+            if driver:
+                # 1️⃣ Save screenshot on disk
+                safe_name = rep.nodeid.replace("::", "_").replace("/", "_")
+                screenshot_path = os.path.join(REPORT_FOLDER, f"{safe_name}.png")
+                os.makedirs(os.path.dirname(screenshot_path), exist_ok=True)
+                driver.save_screenshot(screenshot_path)#Stores png in reports/
 
-            ScreenshotUtility.capture_screenshot(item, screenshot_path)
-
-            if os.path.exists(screenshot_path):
-                html = (
-                    f'<div><img src="file://{screenshot_path}" alt="screenshot" '
-                    'style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div>'
+                # 2️⃣ Attach screenshot to Allure report
+                allure.attach.file(
+                    screenshot_path,
+                    name="Failure Screenshot",
+                    attachment_type=allure.attachment_type.PNG
                 )
-                extra.append(pytest_html.extras.html(html))
 
-        report.extras = extra
+                # 3️⃣ Attach screenshot to pytest-html report
+                screenshot_base64 = base64.b64encode(driver.get_screenshot_as_png()).decode("utf-8")
+                extra = getattr(rep, "extra", [])
+                extra.append(html_extras.png(screenshot_base64))#Attach to pytest-html
+                rep.extra = extra
+
+        except Exception as e:
+            print(f"Could not take screenshot: {e}")
+
+
 
 def is_ci():
     return os.getenv("CI") == "true"
@@ -142,4 +160,5 @@ def cross_browser(request):
 
     yield driver
     driver.quit()
+
 

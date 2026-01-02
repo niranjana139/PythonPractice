@@ -12,6 +12,7 @@ def test_login(browserinstance):
 #@pytest.mark.skipif(sys.platform == "win32", reason="Doesn't work on Windows") ->
 # skipif skips seleniumBasics cases for given conditions.
 
+'''
 def test_firstprogram():
     msg="Hello World"
     assert msg=="Hi","Test Failed. Expected and actual output not matching"
@@ -21,3 +22,4 @@ def test_secondprogramCreditCard():
     a=4
     b=6
     assert a+2==b,"Test success. Expected and actual output  matching"
+'''

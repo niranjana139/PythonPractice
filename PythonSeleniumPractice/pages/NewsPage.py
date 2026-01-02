@@ -3,8 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from utility.PageUtility import PageUtility
-from utility.WaitUtility import WaitUtility
+from PythonSeleniumPractice.utility.PageUtility import PageUtility
 
 
 class NewsPage:

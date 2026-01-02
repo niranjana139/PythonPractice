@@ -1,17 +1,19 @@
+import self
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
+from PythonSeleniumPractice.pages.AdminPage import AdminPage
+from PythonSeleniumPractice.pages.BasePage import BasePage
+from PythonSeleniumPractice.pages.LoginPage import LoginPage
+from PythonSeleniumPractice.pages.NewsPage import NewsPage
+from PythonSeleniumPractice.utility.PageUtility import PageUtility
+from PythonSeleniumPractice.utility.WaitUtility import WaitUtility
 
-from pages.NewsPage import NewsPage
-from utility.PageUtility import PageUtility
-from utility.WaitUtility import WaitUtility
-from pages.LoginPage import LoginPage
-from pages.AdminPage import AdminPage
 
-class HomePage:
+class HomePage(BasePage):
     def __init__(self, driver):
         self.driver = driver
         self.utility = PageUtility()
@@ -33,33 +35,28 @@ class HomePage:
     def click_on_admin_icon(self):
 
         """Click on the admin icon and wait for the page to load"""
-        admin_element = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.admin_icon)
-        )
-        self.utility.click_on_element(admin_element)
+        self.wait_utility.wait_until_clickable(self.driver,self.admin_icon)
+        admin_icon_element=self.find(self.admin_icon)
+        self.utility.click_on_element(admin_icon_element)
         return self
 
     def check_logout(self):
         """Click on the logout button and return to the LoginPage"""
-        logout_button=WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.logout_button)
-        )
-        self.utility.click_on_element(logout_button)
+        logout_element=self.find(self.logout_button)
+        self.utility.click_on_element(logout_element)
         return LoginPage(self.driver)
 
     def is_logout_displayed(self):
         """Check if the logout button is displayed"""
         try:
-            logout_element = self.driver.find_element(self.logout_button)
+            logout_element = self.find(self.logout_button)
             return logout_element.is_displayed()
         except:
             return False
 
     def click_on_tile(self):
         """Click on the tile to navigate to Admin Page"""
-        admin_tile=WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.admin_tile_element)
-        )
+       admin_tile=self.find(self.)
         self.utility.click_on_element(admin_tile)
         return AdminPage(self.driver)
 

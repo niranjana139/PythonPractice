@@ -1,4 +1,6 @@
 import os
+import allure
+
 
 def capture_screenshot(item, file_path):
     """
@@ -20,3 +22,12 @@ def capture_screenshot(item, file_path):
     else:
         print("[Screenshot] Driver not found; skipping screenshot.")
         return None
+
+
+    def attach_screenshot(driver, name="Failure Screenshot"):
+        allure.attach(
+            driver.get_screenshot_as_png(),
+            name=name,
+            attachment_type=allure.attachment_type.PNG
+        )
+
