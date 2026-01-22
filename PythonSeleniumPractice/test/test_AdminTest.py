@@ -32,7 +32,7 @@ class TestAdmin:
         admin_page =home_page.click_on_tile()
         admin_page.click_new_button().add_name_method("randomuser").add_password_method("randompassword").select_type("Staff").click_save()
 
-        expected_URL="https://groceryapp.uniqassosiates.com/admin/user/add"
+        expected_URL="https://groceryapp.uniqassosiates.com/admin/list-admin"
         actual_URL =self.driver.current_url
         # Assert that the reset button is displayed
         assert expected_URL in actual_URL, Messages.USERADD_ERROR
