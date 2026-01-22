@@ -1,9 +1,10 @@
-import self
+
+
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
+
 
 from PythonSeleniumPractice.pages.AdminPage import AdminPage
 from PythonSeleniumPractice.pages.BasePage import BasePage
