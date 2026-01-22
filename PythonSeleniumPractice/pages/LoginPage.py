@@ -15,7 +15,7 @@ class LoginPage(BasePage):
     TITLE = (By.XPATH, "//b[text()='7rmart supermarket']")
 
     def __init__(self, driver):
-        super().__init__(driver)               # ✅ IMPORTANT
+        super().__init__(driver)
         self.page_utility = PageUtility()
         self.wait_utility = WaitUtility()
 

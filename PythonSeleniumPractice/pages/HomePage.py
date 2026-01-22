@@ -56,7 +56,7 @@ class HomePage(BasePage):
 
     def click_on_tile(self):
         """Click on the tile to navigate to Admin Page"""
-       admin_tile=self.find(self.)
+        admin_tile=self.find(self.admin_tile_element)
         self.utility.click_on_element(admin_tile)
         return AdminPage(self.driver)
 

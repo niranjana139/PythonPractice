@@ -1,3 +1,4 @@
+
     # 1. Write contacts to a file (create or overwrite)
     with open("contacts.txt", "w") as file:
         file.write("Name: Alice, Phone: 1234567890\n")

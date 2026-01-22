@@ -1,6 +1,7 @@
 class Greet:
     def hello(self, name=None):
         if name:
+            print("Hello",name)
             print(f"Hello {name}")
         else:
             print("Hello")

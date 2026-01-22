@@ -41,3 +41,12 @@ def browserinstance(request):
     yield driver
     driver.close()
 '''
+import pytest
+from selenium.webdriver.chrome import webdriver
+
+
+@pytest.fixture
+def browserinstance():
+    driver = webdriver.Chrome()  # or Firefox(), Edge(), etc.
+    yield driver
+    driver.quit()  # Ensure to quit the driver after the test

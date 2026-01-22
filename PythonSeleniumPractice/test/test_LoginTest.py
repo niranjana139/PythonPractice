@@ -29,7 +29,7 @@ class TestLoginPage:
         login_page.click_signin_button()
         current_url=self.driver.current_url
         #assert "grocery" in current_url
-        assert current_url == "https://groceryapp.uniqassosiates.com/admin"
+        assert current_url == "https://groceryapp.uniqassosiates.com/admin/login"
 
 
     @pytest.mark.parametrize("username_value",  [generate_random_username()])  # Parametrize to fetch login details
